@@ -33,63 +33,65 @@ export function Navbar() {
     }, [isMenuOpen]);
 
     return (
-        <motion.nav
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 border-b backdrop-blur-md bg-obsidian/70 border-emerald-500/10"
-        >
-            <div className="flex items-center gap-2">
-                <Link href="/" className="text-xl font-bold font-mono tracking-tighter text-emerald-500 hover:text-emerald-400 transition-colors">
-                    &lt;TF /&gt;
-                </Link>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-                {navItems.map((item, index) => {
-                    const isHome = item.name === "Home";
-                    const displayIndex = index;
-
-                    return (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className={cn(
-                                "text-sm font-medium transition-colors hover:text-emerald-400 font-mono",
-                                pathname === item.href ? "text-emerald-500" : "text-gray-400"
-                            )}
-                        >
-                            {!isHome && (
-                                <span className="text-emerald-500/50 mr-1">
-                                    0{displayIndex}.
-                                </span>
-                            )}
-                            {item.name}
-                        </Link>
-                    );
-                })}
-            </div>
-
-            <div className="hidden md:block">
-                <a
-                    href={resumeData.socials.resume}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 text-xs font-mono font-bold text-obsidian bg-emerald-500 rounded hover:bg-emerald-400 transition-colors"
-                >
-                    RESUME
-                </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-                className="md:hidden text-emerald-500 z-[60] p-2 hover:bg-emerald-500/10 rounded-lg transition-colors"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle Menu"
+        <>
+            <motion.nav
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 border-b backdrop-blur-md bg-obsidian/70 border-emerald-500/10"
             >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+                <div className="flex items-center gap-2">
+                    <Link href="/" className="text-xl font-bold font-mono tracking-tighter text-emerald-500 hover:text-emerald-400 transition-colors">
+                        &lt;TF /&gt;
+                    </Link>
+                </div>
+
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex items-center gap-8">
+                    {navItems.map((item, index) => {
+                        const isHome = item.name === "Home";
+                        const displayIndex = index;
+
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                className={cn(
+                                    "text-sm font-medium transition-colors hover:text-emerald-400 font-mono",
+                                    pathname === item.href ? "text-emerald-500" : "text-gray-400"
+                                )}
+                            >
+                                {!isHome && (
+                                    <span className="text-emerald-500/50 mr-1">
+                                        0{displayIndex}.
+                                    </span>
+                                )}
+                                {item.name}
+                            </Link>
+                        );
+                    })}
+                </div>
+
+                <div className="hidden md:block">
+                    <a
+                        href={resumeData.socials.resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 text-xs font-mono font-bold text-obsidian bg-emerald-500 rounded hover:bg-emerald-400 transition-colors"
+                    >
+                        RESUME
+                    </a>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <button
+                    className="md:hidden text-emerald-500 z-[110] p-2 hover:bg-emerald-500/10 rounded-lg transition-colors"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Toggle Menu"
+                >
+                    {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </motion.nav>
 
             {/* Mobile Navigation Overlay */}
             <AnimatePresence>
@@ -99,13 +101,13 @@ export function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[55] bg-obsidian/80 backdrop-blur-2xl flex flex-col md:hidden"
+                        className="fixed inset-0 z-[90] bg-obsidian/90 backdrop-blur-3xl flex flex-col md:hidden"
                     >
                         {/* Technical Background Effects */}
                         <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
 
-                        <div className="container mx-auto px-8 pt-32 relative z-10 flex flex-col h-full">
+                        <div className="container mx-auto px-8 pt-32 relative z-[95] flex flex-col h-full">
                             <motion.div
                                 className="flex flex-col gap-6"
                                 initial="closed"
@@ -134,13 +136,13 @@ export function Navbar() {
                                             <span className="text-emerald-500/30 font-mono text-sm leading-none">
                                                 0{index}.
                                             </span>
-                                            <span className="text-4xl md:text-5xl font-bold tracking-tighter uppercase group-hover:text-emerald-400">
+                                            <span className="text-4xl xs:text-5xl font-bold tracking-tighter uppercase group-hover:text-emerald-400 transition-colors">
                                                 {item.name}
                                             </span>
                                             {pathname === item.href && (
                                                 <motion.div
                                                     layoutId="mobile-active"
-                                                    className="h-1 w-12 bg-emerald-500 ml-4 mb-2"
+                                                    className="h-1 w-12 bg-emerald-500 ml-4 mb-2 hidden xs:block"
                                                 />
                                             )}
                                         </Link>
@@ -152,19 +154,19 @@ export function Navbar() {
                                         open: { y: 0, opacity: 1 },
                                         closed: { y: 20, opacity: 0 }
                                     }}
-                                    className="mt-12 pt-12 border-t border-emerald-500/10 flex flex-col gap-8"
+                                    className="mt-8 pt-8 border-t border-emerald-500/10 flex flex-col gap-6"
                                 >
                                     <a
                                         href={resumeData.socials.resume}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full py-5 text-xl font-mono font-bold text-obsidian bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all text-center shadow-[0_0_30px_rgba(16,185,129,0.2)]"
+                                        className="w-full py-4 text-lg font-mono font-bold text-obsidian bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all text-center shadow-[0_0_30px_rgba(16,185,129,0.2)]"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         &gt; ACCESS_RESUME
                                     </a>
 
-                                    <div className="flex flex-col gap-2 opacity-40 font-mono text-xs">
+                                    <div className="flex flex-col gap-1 opacity-40 font-mono text-[10px] tracking-widest uppercase">
                                         <p className="">// SYSTEM_STATUS: AUTHORIZED</p>
                                         <p className="">// CONNECTION: SECURE_ENCRYPTION</p>
                                     </div>
@@ -174,6 +176,6 @@ export function Navbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </>
     );
 }

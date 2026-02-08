@@ -6,7 +6,7 @@ export const resumeData = {
     socials: {
         github: "https://github.com/talatops",
         linkedin: "https://linkedin.com/in/talat-fm",
-        resume: "https://drive.google.com/your-resume-link-here", // Replace with your actual Google Drive link
+        resume: "https://drive.google.com/file/d/1XE5aAyN3PExzvncjmRxETw_49jUP5EgB/view?usp=sharing",
     },
     techStack: [
         "Docker",
