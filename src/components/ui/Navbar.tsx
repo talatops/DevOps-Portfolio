@@ -98,7 +98,7 @@ export function Navbar() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[55] bg-obsidian flex flex-col md:hidden"
+                        className="fixed inset-0 z-[55] bg-obsidian/80 backdrop-blur-2xl flex flex-col md:hidden"
                     >
                         {/* Technical Background Effects */}
                         <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
