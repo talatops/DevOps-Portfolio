@@ -110,6 +110,7 @@ export const resumeData = {
                 github: "https://github.com/talatops/juno-hub.git",
             },
             isPrivate: true,
+            images: ["/home/talatfaheem/PROJECTS/portfolio/src/app/projects/junohub/1.png", "/home/talatfaheem/PROJECTS/portfolio/src/app/projects/junohub/2.png"],
         },
         {
             title: "ZORYX Capital",
@@ -134,7 +135,8 @@ export const resumeData = {
                 github: "https://github.com/talatops/imrp-platform.git",
                 demo: "https://portal.zoryxcapital.com"
             },
-            isPrivate: true
+            isPrivate: true,
+            images: ["/projects/imrp-platform/1.png", "/projects/imrp-platform/2.png"],
         },
         {
             title: "Project Sentinel",
@@ -158,7 +160,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/sentinel.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/project-sentinel/1.png", "/projects/project-sentinel/2.png"],
         },
         {
             title: "QIMMA (قمة)",
@@ -182,7 +185,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/qimma-erp.git",
             },
-            isPrivate: true
+            isPrivate: true,
+            images: ["/projects/qimma-erp/1.png", "/projects/qimma-erp/2.png"],
         },
         {
             title: "Eliza Logging System",
@@ -206,7 +210,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/Sentry-logging-server.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/eliza-logging/1.png", "/projects/eliza-logging/2.png"],
         },
         {
             title: "AWSSET",
@@ -229,7 +234,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/AWSSET.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/awsset/1.png", "/projects/awsset/2.png"],
         },
         {
             title: "REDDIT-CLONE",
@@ -252,7 +258,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/REDDIT-CLONE.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/reddit-clone/1.png", "/projects/reddit-clone/2.png"],
         },
         {
             title: "ZENITH",
@@ -275,7 +282,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/ZENITH.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/zenith/1.png", "/projects/zenith/2.png"],
         },
         {
             title: "StreamFlix",
@@ -298,7 +306,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/StreamFlix.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/streamflix/1.png", "/projects/streamflix/2.png"],
         },
         {
             title: "AUTH-SECURITY",
@@ -321,7 +330,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/Exploiting-Securing-JWT-BOLA.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/auth-security/1.png", "/projects/auth-security/2.png"],
         },
         {
             title: "ZKP-Voter",
@@ -344,7 +354,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/ZKP-SNARK-VOTING.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/zkp-voter/1.png", "/projects/zkp-voter/2.png"],
         },
         {
             title: "Blog Engine",
@@ -367,7 +378,8 @@ export const resumeData = {
             links: {
                 github: "https://github.com/talatops/NodeJs-Blog.git",
             },
-            isPrivate: false
+            isPrivate: false,
+            images: ["/projects/blog-engine/1.png", "/projects/blog-engine/2.png"],
         },
     ],
     skills: [

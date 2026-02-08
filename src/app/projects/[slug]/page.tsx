@@ -92,9 +92,9 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                     <div className="space-y-20">
                         <ScrollReveal delay={0.1}>
                             <div className="max-w-3xl">
-                                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3 border-l-4 border-emerald-500 pl-4">
                                     <span className="text-emerald-500 font-mono text-lg">01.</span>
-                                    About the Project
+                                    The Objective
                                 </h2>
                                 <p className="text-gray-400 text-lg leading-relaxed">
                                     {project.longDescription}
@@ -102,11 +102,49 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                             </div>
                         </ScrollReveal>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-                            <ScrollReveal delay={0.2}>
-                                <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                        {/* Project Gallery - NEW SECTION */}
+                        <ScrollReveal delay={0.2}>
+                            <div>
+                                <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-l-4 border-emerald-500 pl-4">
                                     <span className="text-emerald-500 font-mono text-lg">02.</span>
-                                    Key Features
+                                    Visual Showcase
+                                </h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    {project.images?.map((img, i) => (
+                                        <motion.div
+                                            key={i}
+                                            whileHover={{ scale: 1.02 }}
+                                            className="relative aspect-video rounded-xl overflow-hidden border border-emerald-500/20 bg-emerald-950/20 group"
+                                        >
+                                            <img
+                                                src={img}
+                                                alt={`${project.title} screenshot ${i + 1}`}
+                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                                onError={(e) => {
+                                                    (e.target as HTMLImageElement).src = `https://placehold.co/1280x720/021510/10b981?text=${project.title}+Visual+${i + 1}`;
+                                                }}
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                                <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest">
+                                                    // VISUAL_INTERFACE_0{i + 1}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    )) || (
+                                            <div className="col-span-full py-20 border border-dashed border-emerald-500/10 rounded-xl flex flex-col items-center justify-center text-gray-500 font-mono bg-white/5">
+                                                <p className="">[ NO_VISUAL_DATA_AVAILABLE ]</p>
+                                                <p className="text-[10px] mt-2 opacity-50 underline">Awaiting Interface Synthesis</p>
+                                            </div>
+                                        )}
+                                </div>
+                            </div>
+                        </ScrollReveal>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+                            <ScrollReveal delay={0.3}>
+                                <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-l-4 border-emerald-500 pl-4">
+                                    <span className="text-emerald-500 font-mono text-lg">03.</span>
+                                    Core Engineering
                                 </h2>
                                 <ul className="space-y-6">
                                     {project.features?.map((feature, i) => (
@@ -118,10 +156,10 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                                 </ul>
                             </ScrollReveal>
 
-                            <ScrollReveal delay={0.3}>
-                                <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-                                    <span className="text-emerald-500 font-mono text-lg">03.</span>
-                                    Technical Challenges
+                            <ScrollReveal delay={0.4}>
+                                <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3 border-l-4 border-emerald-500 pl-4">
+                                    <span className="text-emerald-500 font-mono text-lg">04.</span>
+                                    Critical Solves
                                 </h2>
                                 <div className="space-y-4">
                                     {project.challenges?.map((challenge, i) => (
