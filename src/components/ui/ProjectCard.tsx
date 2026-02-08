@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Folder, Github, ExternalLink, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
     title: string;
@@ -19,7 +20,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ title, subtitle, slug, description, tech, links, isPrivate, images }: ProjectCardProps) {
-    const mainImage = images && images.length > 0 ? images[0] : null;
+    const hasImages = images && images.length > 0;
+    const mainImage = hasImages ? images[0] : `https://placehold.co/600x400/021510/10b981?text=${title}`;
 
     return (
         <Link href={`/projects/${slug}`}>
@@ -29,21 +31,17 @@ export function ProjectCard({ title, subtitle, slug, description, tech, links, i
             >
                 {/* Project Image Header */}
                 <div className="relative h-48 w-full bg-emerald-950/20 overflow-hidden">
-                    {mainImage ? (
-                        <img
-                            src={mainImage}
-                            alt={title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            onError={(e) => {
-                                // Fallback if image doesn't exist yet
-                                (e.target as HTMLImageElement).src = `https://placehold.co/600x400/021510/10b981?text=${title}`;
-                            }}
-                        />
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-emerald-950/20">
-                            <Folder size={40} className="text-emerald-500/20" />
-                        </div>
-                    )}
+                    <img
+                        src={mainImage}
+                        alt={title}
+                        className={cn(
+                            "w-full h-full object-cover transition-all duration-500 group-hover:scale-110",
+                            !hasImages && "blur-[1px] opacity-40 group-hover:blur-0 group-hover:opacity-100"
+                        )}
+                        onError={(e) => {
+                            (e.target as HTMLImageElement).src = `https://placehold.co/600x400/021510/10b981?text=${title}`;
+                        }}
+                    />
 
                     {/* Overlay Grid */}
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:1rem_1rem]" />

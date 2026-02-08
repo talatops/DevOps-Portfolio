@@ -109,34 +109,39 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                                     <span className="text-emerald-500 font-mono text-lg">02.</span>
                                     Visual Showcase
                                 </h2>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    {project.images?.map((img, i) => (
-                                        <motion.div
-                                            key={i}
-                                            whileHover={{ scale: 1.02 }}
-                                            className="relative aspect-video rounded-xl overflow-hidden border border-emerald-500/20 bg-emerald-950/20 group"
-                                        >
-                                            <img
-                                                src={img}
-                                                alt={`${project.title} screenshot ${i + 1}`}
-                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                                                onError={(e) => {
-                                                    (e.target as HTMLImageElement).src = `https://placehold.co/1280x720/021510/10b981?text=${project.title}+Visual+${i + 1}`;
-                                                }}
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                                                <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest">
-                                                    // VISUAL_INTERFACE_0{i + 1}
-                                                </p>
-                                            </div>
-                                        </motion.div>
-                                    )) || (
-                                            <div className="col-span-full py-20 border border-dashed border-emerald-500/10 rounded-xl flex flex-col items-center justify-center text-gray-500 font-mono bg-white/5">
-                                                <p className="">[ NO_VISUAL_DATA_AVAILABLE ]</p>
-                                                <p className="text-[10px] mt-2 opacity-50 underline">Awaiting Interface Synthesis</p>
-                                            </div>
-                                        )}
-                                </div>
+                                {project.images && project.images.length > 0 ? (
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        {project.images.map((img, i) => (
+                                            <motion.div
+                                                key={i}
+                                                whileHover={{ scale: 1.02 }}
+                                                className="relative aspect-video rounded-xl overflow-hidden border border-emerald-500/20 bg-emerald-950/20 group"
+                                            >
+                                                <img
+                                                    src={img}
+                                                    alt={`${project.title} screenshot ${i + 1}`}
+                                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                                                    onError={(e) => {
+                                                        (e.target as HTMLImageElement).src = `https://placehold.co/1280x720/021510/10b981?text=${project.title}+Visual+${i + 1}`;
+                                                    }}
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                                                    <p className="text-emerald-400 font-mono text-xs uppercase tracking-widest">
+                                                        // VISUAL_INTERFACE_0{i + 1}
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="py-20 border border-dashed border-emerald-500/10 rounded-xl flex flex-col items-center justify-center text-gray-400 font-mono bg-white/5 backdrop-blur-sm">
+                                        <div className="text-emerald-500/20 mb-4 scale-150 transform">
+                                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg>
+                                        </div>
+                                        <p className="text-emerald-500/40 animate-pulse text-lg font-bold tracking-[0.2em] uppercase">[ No Visual Data ]</p>
+                                        <p className="text-[10px] mt-2 opacity-30 uppercase tracking-widest">Awaiting Interface Synthesis / Node Linkage</p>
+                                    </div>
+                                )}
                             </div>
                         </ScrollReveal>
 
