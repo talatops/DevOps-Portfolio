@@ -94,35 +94,82 @@ export function Navbar() {
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, x: "100%" }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: "100%" }}
-                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 z-[55] bg-obsidian/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-[55] bg-obsidian flex flex-col md:hidden"
                     >
-                        {navItems.map((item, index) => (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => setIsMenuOpen(false)}
-                                className={cn(
-                                    "text-3xl font-bold font-mono transition-colors",
-                                    pathname === item.href ? "text-emerald-500" : "text-gray-400"
-                                )}
+                        {/* Technical Background Effects */}
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b98108_1px,transparent_1px),linear-gradient(to_bottom,#10b98108_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 to-transparent pointer-events-none" />
+
+                        <div className="container mx-auto px-8 pt-32 relative z-10 flex flex-col h-full">
+                            <motion.div
+                                className="flex flex-col gap-6"
+                                initial="closed"
+                                animate="open"
+                                variants={{
+                                    open: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+                                    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+                                }}
                             >
-                                <span className="text-emerald-500/30 mr-4 text-xl">0{index}.</span>
-                                {item.name}
-                            </Link>
-                        ))}
-                        <a
-                            href={resumeData.socials.resume}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mt-8 px-12 py-4 text-lg font-mono font-bold text-obsidian bg-emerald-500 rounded hover:bg-emerald-400 transition-colors"
-                            onClick={() => setIsMenuOpen(false)}
-                        >
-                            RESUME
-                        </a>
+                                {navItems.map((item, index) => (
+                                    <motion.div
+                                        key={item.name}
+                                        variants={{
+                                            open: { x: 0, opacity: 1 },
+                                            closed: { x: -20, opacity: 0 }
+                                        }}
+                                    >
+                                        <Link
+                                            href={item.href}
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className={cn(
+                                                "group flex items-baseline gap-4 transition-all",
+                                                pathname === item.href ? "text-emerald-500" : "text-gray-400"
+                                            )}
+                                        >
+                                            <span className="text-emerald-500/30 font-mono text-sm leading-none">
+                                                0{index}.
+                                            </span>
+                                            <span className="text-4xl md:text-5xl font-bold tracking-tighter uppercase group-hover:text-emerald-400">
+                                                {item.name}
+                                            </span>
+                                            {pathname === item.href && (
+                                                <motion.div
+                                                    layoutId="mobile-active"
+                                                    className="h-1 w-12 bg-emerald-500 ml-4 mb-2"
+                                                />
+                                            )}
+                                        </Link>
+                                    </motion.div>
+                                ))}
+
+                                <motion.div
+                                    variants={{
+                                        open: { y: 0, opacity: 1 },
+                                        closed: { y: 20, opacity: 0 }
+                                    }}
+                                    className="mt-12 pt-12 border-t border-emerald-500/10 flex flex-col gap-8"
+                                >
+                                    <a
+                                        href={resumeData.socials.resume}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full py-5 text-xl font-mono font-bold text-obsidian bg-emerald-500 rounded-lg hover:bg-emerald-400 transition-all text-center shadow-[0_0_30px_rgba(16,185,129,0.2)]"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        &gt; ACCESS_RESUME
+                                    </a>
+
+                                    <div className="flex flex-col gap-2 opacity-40 font-mono text-xs">
+                                        <p className="">// SYSTEM_STATUS: AUTHORIZED</p>
+                                        <p className="">// CONNECTION: SECURE_ENCRYPTION</p>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
