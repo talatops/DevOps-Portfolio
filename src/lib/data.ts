@@ -136,7 +136,7 @@ export const resumeData = {
                 demo: "https://portal.zoryxcapital.com"
             },
             isPrivate: true,
-            images: ["/projects/zoryx/1.png"],
+            images: [],
         },
         {
             title: "Project Sentinel",
