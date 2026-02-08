@@ -24,6 +24,14 @@ export const resumeData = {
         { label: "Faster Deploys", value: "25%" },
         { label: "Bug Reduction", value: "40%" },
     ],
+    certifications: [
+        {
+            name: "AWS Certified Cloud Practitioner",
+            issuer: "Amazon Web Services",
+            date: "2026",
+            url: "https://www.credly.com/credentials/27221416-5556-462d-946d-666124226f5f",
+        },
+    ],
     experience: [
         {
             company: "ThoughtScape",
